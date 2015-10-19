@@ -1,1 +1,57 @@
 /* add your CSS rules here */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#map {
+    height: 100%;
+}
+
+.cameraImage img {
+    width: 250px;
+}
+
+#infoBar {
+    position:absolute;
+    top: 0.5em;
+    left: 3em;
+    width:30%;
+    background-color: rgba(250, 250, 250, 0.9);
+    text-align: center;
+    z-index: 1;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+h1, p {
+    margin: 0;
+}
+
+#traffic-filter-field {
+    width: 80%;
+}
+
+h1 {
+    padding-bottom: 0.3em;
+    font-size: 15px;
+}
+
+#sdotCount {
+    color: #7C3BB8;
+    font-weight: bold;
+    text-shadow: 1px 0.5px #191A1E;
+}
+#wsdotCount {
+    color: #FDDD0B;
+    font-weight: bold;
+    text-shadow: 1px 0.5px #191A1E;
+}

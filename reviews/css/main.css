@@ -1,0 +1,84 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+body {
+    font-size: 14px;
+    font-weight: 300;
+}
+h1 {
+    padding-top: 0em;
+    font-size: 22px;
+}
+
+#error-message {
+    display: none;
+}
+
+img {
+    max-height: 6em;
+    float: left;
+    vertical-align: baseline;
+}
+
+.rating {
+    color:#FFBB00;
+}
+
+#trash-icon, .thumb-icon {
+    cursor: pointer;
+
+}
+.title {
+    font-size: 18px;
+}
+
+#trash-icon, .thumb-icon {
+    font-size: 12px;
+    float: right;
+    padding: 0.5em;
+}
+
+#trash-icon:hover, .thumb-icon:hover {
+    color: #808080;
+}
+
+#trash-icon:active, .thumb-icon:active {
+    color: orangered;
+}
+
+.feedback {
+    font-size: 10px;
+}
+
+.review-block {
+    background-color: aliceblue;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 6px;
+    box-shadow: 2px 3px 3px #d3d3d3;
+}
+
+@media(min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .title {
+        font-size: 20px;
+    }
+    .feedback {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+}
+
+

@@ -1,11 +1,30 @@
 
 angular.module('ProductsApp', [])
+    .constant('ordersKey', 'orders')
+    //.constant('storageKey', '')
     .factory('productsJSON', function($http) {
         return $http.get('products.json')
 
     })
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('checkout', {
+                url:'/checkout',
+                templateUrl: 'views/checkout.html',
+                controller: 'CheckoutController'
+            })
+        //$urlRouterProvider.otherwise('/')
 
-    .constant('ordersKey', 'orders')
+    })
+
+    .controller ('CheckoutController', function($scope, $stateParams,
+                                                $state,ordersKey) {
+        //$scope.
+
+
+    }
+)
+
     .controller('ProductsController', function($scope, productsJSON, ordersKey) {
         'use strict';
 

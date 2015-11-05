@@ -31,7 +31,6 @@ nav {
 	width: 100%;
 	font-size: 16px;
 	color: #FFF;
-	padding-left: 15px;
 	top: 0;
 	left: 0;
 }
@@ -44,6 +43,7 @@ nav li {
 nav a {
 	color: #FFF;
 	text-decoration: none;
+    transition: all 0.3s;
 }
 
 nav ul {
@@ -67,6 +67,7 @@ nav svg:hover, nav svg:focus {
 
 header {
 	padding-top: 3em;
+    position: relative;
 }
 
 #motto {

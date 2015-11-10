@@ -7,7 +7,7 @@ angular.module('ProductsApp', ['ui.router', 'LocalStorageModule', 'firebase'])
         return localStorageService.get(storageKey) || [];
     })
     .factory('productsJSON', function($http) {
-        return $http.get('products.json')
+        return $http.get('data/products.json')
 
     })
     .config(function($stateProvider, $urlRouterProvider) {

@@ -1,7 +1,7 @@
 #Expanding your Tool Box -Polymer
 
 ##Demo
-This is a website that a user can create new study cards, delete them, and mark as like. You could view the website here. However, if you would like to run this project locally, please check out the "Set up your own polymer project" section below. It utilizes and demonstrates the Polymer library and its Pubnub element.
+This is a [website](http://students.washington.edu/xfeng1/info343/challenges/polymer/) that a user can create new study cards, delete them, and mark as like. You could view the website here. However, if you would like to run this project locally, please check out the "Set up your own polymer project" section below. It utilizes and demonstrates the Polymer library and its Pubnub element.
 
 ##Why Polymer?
 

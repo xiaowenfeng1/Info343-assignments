@@ -1,0 +1,86 @@
+<link rel="import" href="../bower_components/polymer/polymer.html"/>
+
+<dom-module id="cards-listing">
+
+    <style>
+
+        .smallText {
+            font-size: 15px;
+            color: #727272;
+        }
+        .card-actions {
+            float: right;
+        }
+        .fa {
+            padding-right: 0.3em;
+        }
+
+
+    </style>
+
+    <template>
+            <paper-material hidden={{hidden}} elevation="3">
+                <div class="card-actions">
+                    <paper-icon-button icon="delete" on-click="deleteCard"></paper-icon-button>
+                    <paper-icon-button isRed="{{isRed}}" style$="{{style}}"
+                                       id= "likeButton" icon="favorite" on-click="likeCard">
+                    </paper-icon-button>
+
+                </div>
+                <paper-item>{{card}}</paper-item>
+                <paper-item class="smallText"><i class="fa fa-book"></i>{{subject}}</paper-item>
+                <paper-item class="smallText">{{content}}</paper-item>
+                <paper-item class="smallText"><i class="fa fa-clock-o"></i>{{time}}</paper-item>
+            </paper-material>
+
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is:'cards-listing',
+        properties: {
+            card: {
+                type: String,
+                value: ''
+            },
+            subject: {
+                type: String,
+                value: ''
+            },
+            content: {
+                type: String,
+                value: ''
+            },
+            time: {
+                type: String,
+                value: new Date().toLocaleString()
+            },
+            hidden: {
+                type: Boolean,
+                value: false
+            },
+            style: {
+                type: String,
+                value: ""
+            },
+            isRed: {
+                type: Boolean,
+                value: false
+            }
+        },
+        likeCard: function(evt) {
+            this.isRed = !this.isRed;
+            if (this.isRed) {
+                this.style = 'color: #E91E63';
+            } else {
+                this.style = "";
+            }
+        },
+        deleteCard: function(evt) {
+            this.hidden = !this.hidden;
+        }
+
+    });
+</script>
+

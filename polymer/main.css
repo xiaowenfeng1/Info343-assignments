@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+body {
+    font-family: Lato, Raleway, 'Helvetcia Neue', Helvetcia, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #212121;
+    background-color: #2196F3;
+}
+
+header {
+    text-align: center;
+    color: #FFF;
+}
+
+paper-material {
+    width: 80%;
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    margin-bottom: 1em;
+    background-color: #f9fbff;
+}
+
+paper-icon-button {
+    float:right;
+    color:#FFC107;
+}
+
+paper-input-container {
+margin-top: 0em;
+}
+

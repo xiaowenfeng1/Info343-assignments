@@ -1,0 +1,116 @@
+<link rel="import" href="../bower_components/polymer/polymer.html"/>
+<link rel="import" href="cards-listing.html"/>
+<link rel="import" href="../bower_components/pubnub-element/pubnub-element.html"/>
+
+<dom-module id="card-app">
+    <style>
+        paper-input, paper-textarea {
+            padding-right: 1em;
+            padding-left: 1em;
+        }
+    </style>
+
+    <template>
+        <header>
+            <h1>My Study Cards</h1>
+            <p>Create study cards for your exams!</p>
+        </header>
+
+        <core-pubnub
+                publish_key="pub-c-fcd48481-2401-4ebc-9f20-8f63abf701e9"
+                subscribe_key="sub-c-753a71aa-927e-11e5-8db0-0619f8945a4f">
+            <core-pubnub-publish id="pub" channel="cards" message="Hello"></core-pubnub-publish>
+            <core-pubnub-subscribe id="sub" channel="cards"
+                                   messages="{{messages}}" on-callback="updateList">
+            </core-pubnub-subscribe>
+        </core-pubnub>
+        <div style="padding: 0.5em">
+            <paper-material style="background-color:#E91E63" hidden={{hidden}}>
+                <div style="color: #FFF">  All the fields are required</div>
+
+            </paper-material>
+        </div>
+
+        <div>
+            <paper-material elevation="3">
+                <paper-icon-button icon="add" on-click="addCard"></paper-icon-button>
+                <paper-item>Add a new card</paper-item>
+                <paper-input id="newCard" label="The title is..." ></paper-input>
+                <paper-input id="newSub" label="The subject is.." char-counter maxlength="20"></paper-input>
+                <paper-textarea row="4" id="newContent" label="Content"></paper-textarea>
+            </paper-material>
+        </div>
+
+        <div>
+            <template is="dom-repeat" items="{{cards}}">
+                <cards-listing subject="{{item.subject}}"
+                               card="{{item.card}}" content="{{item.content}}">
+                </cards-listing>
+            </template>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "card-app",
+        properties: {
+            cards: {
+                type: Array,
+                value: [{card:"Five components of risk management", subject:"INFO312",
+                        content:"Identify the assets to be protected.  What are you protecting " +
+                        "(i.e. customer information, critical business processes, etc.), " +
+                        "and why (privacy, security, etc.)? Identify the threats to those assets. " +
+                        " What could happen to the assets identified in step 1?  Rank the threats " +
+                        "by both impact and probability.  (This is the traditional risk assessment step.) " +
+                        "Apply controls in a layered, overlapping way until the risks are" +
+                        " reduced to an acceptable level.Test the adequacy and effectiveness of the controls." +
+                        "Monitor the program and periodically repeat the process."},
+                    {card:"Java Definitions", subject:"CSE 142",
+                        content:"syntax: The set of legal structures and commands that can " +
+                        "be used in a particular language. Every basic Java statement ends " +
+                        "with a semicolon ;The contents of a class or method occur between { and } "}]
+            },
+            messages: {
+                type: Array,
+                value: []
+            },
+            hidden: {
+                type: Boolean,
+                value: true
+            }
+        },
+        addCard: function(evt) {
+            var newCard = this.$.newCard.value;
+            var newSub = this.$.newSub.value;
+            var newContent = this.$.newContent.value;
+
+            if (!newCard || !newSub || !newContent) {
+                if(this.hidden) {
+                    this.hidden = !this.hidden;
+                }
+                return;
+            }
+
+            this.$.pub.message = {
+                type: 'cards', card: newCard, subject: newSub,
+                content: newContent
+            };
+            this.$.pub.publish();
+            this.$.newCard.value = '';
+            this.$.newSub.value = '';
+            this.$.newContent.value = '';
+            if (!this.hidden) {
+                this.hidden = !this.hidden;
+            }
+        },
+        updateList: function(evt) {
+            while(this.messages.length > 0) {
+                var item = this.messages.pop();
+                this.unshift('cards', {card: item.card, subject: item.subject,
+                                        content: item.content});
+            }
+        }
+    });
+</script>
+
